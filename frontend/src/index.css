@@ -1,0 +1,59 @@
+:root {
+  --void:     #010a14;
+  --deep:     #03101e;
+  --mid:      #071e30;
+  --surface:  #0b2d46;
+  --shore:    #0e3d5e;
+  --foam:     #1a7a9a;
+  --biolume:  #38c9e8;
+  --glow:     #82dff0;
+  --light:    #c5ecf5;
+  --white:    #eef9fd;
+  --coral:    #ff8fab;
+  --gold:     #ffd27a;
+  --muted:    #1f5a72;
+  --text-dim: #3d8ba5;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-mono:  'DM Mono', 'Courier New', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body, #root { height: 100%; }
+
+body {
+  background: var(--void);
+  color: var(--light);
+  font-family: var(--font-serif);
+  cursor: none;
+  overflow: hidden;
+}
+
+/* Soft slow aurora at top — barely visible */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 90% 35% at 50% -5%, rgba(56,201,232,.035) 0%, transparent 65%);
+  animation: softAurora 18s ease-in-out infinite alternate;
+}
+
+@keyframes softAurora {
+  0%   { opacity:.5; transform: scaleX(1) translateY(0); }
+  50%  { opacity:1;  transform: scaleX(1.1) translateY(8px); }
+  100% { opacity:.6; transform: scaleX(.95) translateY(-4px); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--shore); border-radius: 2px; }
+
+/* Selection */
+::selection { background: rgba(56,201,232,.15); color: var(--white); }
+
+button   { cursor: none; font-family: inherit; }
+a        { cursor: none; }
+input, textarea { font-family: inherit; }
